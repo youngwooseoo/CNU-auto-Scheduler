@@ -4,7 +4,10 @@ import matplotlib.pyplot as plt
 import matplotlib.patches as patches
 
 # CSV 불러오기 (예시)
-df = pd.read_csv("충남대_강의정보_요약.csv")
+uploaded_file = st.file_uploader("CSV 파일을 업로드하세요", type="csv")
+if uploaded_file is not None:
+    df = pd.read_csv(uploaded_file)
+    # 그 다음부터 df를 활용하는 기존 코드가 이어지면 돼
 
 # 학과 리스트 추출
 departments = sorted(df['운영학과'].dropna().unique())
